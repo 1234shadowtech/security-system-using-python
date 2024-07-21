@@ -168,13 +168,28 @@ stop_flag = True
 current_hour = now.hour
 current_minute = now.minute + 1
 
+with open(csv_filename, mode='r', newline='') as file:
+    reader = csv.reader(file)
+    next(reader)
+    for row in reader:
+        condition,x,y=row
+       
+        if len(condition)!=0:
+            
+             
+            print(condition)
+            break
+        break
+        
 
 
 # Extract hour and minute as integers
-reader ="Unknown person detected "
+if condition == "unknown":
+    reader ="Unknown person detected "
 
-print(current_hour)
-print(current_minute)
-pywhatkit.sendwhatmsg('+919019864152',reader,current_hour,current_minute)
-# After main execution of file2.py completes, launch file1.py
-
+    print(current_hour)
+    print(current_minute)
+    pywhatkit.sendwhatmsg('+919019864152',reader,current_hour,current_minute)
+    # After main execution of file2.py completes, launch file1.py
+else:
+    print("no unknown person detected")
